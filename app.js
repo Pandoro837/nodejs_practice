@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const routes = require(path.join(__dirname, './routes/index')); //router
 
 const app = express();
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// router
+const routes = require(path.join(__dirname, './routes/index')); //router
 
 // views set
 app.set('views', path.join(__dirname, './views'));

@@ -11,9 +11,11 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/checkEmail', (req, res) => {
-    const userEmail = req.body;
+    const userEmail = res.body;
     console.log(userEmail);
     const sql = `select user_email from users where user_email = '${userEmail}'`
+    //console.log(sql);
+    /*
     var conn = db_connect.init();
     db_connect.open(conn);
     conn.query(sql, (error, rows, fields) => {
@@ -29,6 +31,7 @@ router.post('/checkEmail', (req, res) => {
         };
     });
     db_connect.close(conn);
+    */
 });
 
 router.post('/add', (req, res) => {
@@ -45,6 +48,7 @@ router.post('/add', (req, res) => {
         console.log('result : ', rows);
     });
     db_connect.close(conn);
+    res.redirect('/');
 });
 
 module.exports = router;

@@ -24,7 +24,7 @@
                 <div class="input-group">
                     <input type="email" id="inputEmail" name="userEmail" class="form-control" placeholder="Email address" required autofocus>
                     <div class="input-group-append">
-                        <button type="button" id="checkEmail" class="btn btn-primary">Check</button>
+                        <button type="button" id="emailCheckBtn" onclick="checkEmail()" class="btn btn-primary">Check</button>
                     </div>
                 </div>
             </div>
@@ -40,5 +40,21 @@
         </form>
     </main>
 </body>
-
+    <script>
+        var userEmail = document.getElementById('inputEmail');
+        function checkEmail() {
+            console.log(userEmail.value);
+            const url = '/users/checkEmail';
+            const option = {
+                method : 'post',
+                headers : {'Content-type' : 'application/json'},
+                body : userEmail.value
+            };
+            console.log(option.body);
+            fetch(url, option)
+            .then((res) => {
+                //console.log(res);
+            });
+        }
+    </script>
 </html>

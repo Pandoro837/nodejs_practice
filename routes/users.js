@@ -11,11 +11,11 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/checkEmail', (req, res) => {
-    const userEmail = res.body;
+    const userEmail = req.body;
     console.log(userEmail);
-    const sql = `select user_email from users where user_email = '${userEmail}'`
-    //console.log(sql);
-    /*
+    const sql = `select user_email from users where user_email = '${userEmail.userEmail}'`
+    console.log(sql);
+    
     var conn = db_connect.init();
     db_connect.open(conn);
     conn.query(sql, (error, rows, fields) => {
@@ -31,7 +31,6 @@ router.post('/checkEmail', (req, res) => {
         };
     });
     db_connect.close(conn);
-    */
 });
 
 router.post('/add', (req, res) => {

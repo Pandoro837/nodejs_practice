@@ -44,11 +44,14 @@
         var userEmail = document.getElementById('inputEmail');
         function checkEmail() {
             console.log(userEmail.value);
+            var data = {
+                'userEmail' : userEmail.value
+            }
             const url = '/users/checkEmail';
             const option = {
                 method : 'post',
                 headers : {'Content-type' : 'application/json'},
-                body : userEmail.value
+                body : JSON.stringify(data)
             };
             console.log(option.body);
             fetch(url, option)

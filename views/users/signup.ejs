@@ -43,7 +43,6 @@
     <script>
         var userEmail = document.getElementById('inputEmail');
         function checkEmail() {
-            console.log(userEmail.value);
             var data = {
                 'userEmail' : userEmail.value
             }
@@ -53,11 +52,8 @@
                 headers : {'Content-type' : 'application/json'},
                 body : JSON.stringify(data)
             };
-            console.log(option.body);
             fetch(url, option)
-            .then((res) => {
-                //console.log(res);
-            });
+            .then((res) => {console.log(res.text())})
         }
     </script>
 </html>

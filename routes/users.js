@@ -11,22 +11,19 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/checkEmail', (req, res) => {
-    const userEmail = req.body;
-    console.log(userEmail);
-    const sql = `select user_email from users where user_email = '${userEmail.userEmail}'`
-    console.log(sql);
-    
+    const userEmail = req.body.userEmail;
+    const sql = `select user_email from users where user_email = '${userEmail}'`
     var conn = db_connect.init();
     db_connect.open(conn);
     conn.query(sql, (error, rows, fields) => {
         if (error) {
             console.log(error);
         } else {
-            if(res.length){
+            if(rows.length){
                 console.log('Exist : ', rows);
-                return false;
+                res.send(false);
             } else {
-                return true;
+                res.send(true);
             }
         };
     });
